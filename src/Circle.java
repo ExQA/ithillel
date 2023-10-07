@@ -1,4 +1,4 @@
-public class Circle implements GeometricShape{
+public class Circle implements GeometricShape {
     private double radius;
 
     public Circle(double radius) {
