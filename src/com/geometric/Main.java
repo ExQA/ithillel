@@ -1,3 +1,5 @@
+package com.geometric;
+
 public class Main {
     public static void main(String[] args) {
         GeometricShape[] shapes = new GeometricShape[3];

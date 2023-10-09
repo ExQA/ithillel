@@ -1,3 +1,5 @@
+package com.geometric;
+
 public class Triangle implements GeometricShape {
     private double base;
     private double height;

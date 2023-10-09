@@ -1,3 +1,5 @@
+package com.geometric;
+
 public class Square implements GeometricShape {
     private double length;
 
