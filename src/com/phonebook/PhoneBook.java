@@ -3,7 +3,7 @@ package com.phonebook;
 import java.util.ArrayList;
 
 public class PhoneBook {
-    private ArrayList<Record> records;
+    private final ArrayList<Record> records;
 
     public PhoneBook() {
         records = new ArrayList<>();
@@ -40,6 +40,13 @@ public class PhoneBook {
         } else {
             return foundRecords;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "PhoneBook{" +
+                "records=" + records +
+                '}';
     }
 }
 

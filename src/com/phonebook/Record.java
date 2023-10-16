@@ -3,8 +3,8 @@ package com.phonebook;
 import java.util.ArrayList;
 
 public class Record {
-    private String name;
-    private ArrayList<String> phone;
+    private final String name;
+    private final ArrayList<String> phone;
 
     public Record(String name, String phone) {
         this.name = name;
@@ -18,5 +18,13 @@ public class Record {
 
     public ArrayList<String> getPhone() {
         return phone;
+    }
+
+    @Override
+    public String toString() {
+        return "Record{" +
+                "name='" + name + '\'' +
+                ", phone=" + phone +
+                '}';
     }
 }

@@ -1,3 +1,5 @@
+package com.arraytolist;
+
 public class CountWords {
     public static int countOccurance(String[] wordsList, String word) {
         int count = 0;
