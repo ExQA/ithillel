@@ -1,6 +1,7 @@
+package com.reverselist;
+
 public class Solution {
-    public ListNode reverseList(ListNode head) {
-        /* iterative solution */
+    public static ListNode reverseList(ListNode head) {
         ListNode newHead = null;
         while (head != null) {
             ListNode next = head.next;
