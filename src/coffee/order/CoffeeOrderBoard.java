@@ -5,22 +5,23 @@ import java.util.List;
 
 public class CoffeeOrderBoard {
     private final List<Order> orders;
+    private int next = 1;
 
     public CoffeeOrderBoard() {
         orders = new ArrayList<>();
     }
 
     public void add(Order order) {
-        int orderNumber = orders.size() + 1;
-        order.setOrderNumber(orderNumber);
+        order.setOrderNumber(next);
         orders.add(order);
+        next++;
     }
 
     public void deliver() {
         if (!orders.isEmpty()) {
-            Order nextOrder = orders.get(0);
-            System.out.println("Deliver ing order : " + nextOrder.getOrderNumber() + " | "
-                    + nextOrder.getCustomerName());
+            Order delivered = orders.get(0);
+            System.out.println("Deliver ing order : " + delivered.getOrderNumber() + " | "
+                    + delivered.getCustomerName());
             orders.remove(0);
         } else {
             System.out.println("No orders to deliver");
