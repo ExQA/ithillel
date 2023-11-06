@@ -5,11 +5,10 @@ public class Main {
     public static void main(String[] args) {
         CoffeeOrderBoard orderBoard = new CoffeeOrderBoard();
 
-        orderBoard.add(new Order(4, "Tom"));
-        orderBoard.add(new Order(1, "Catwoman"));
-        orderBoard.add(new Order(4, "Ironman"));
-        orderBoard.add(new Order(3, "Spyderman"));
-        orderBoard.add(new Order(1, "Superman"));
+        orderBoard.add(new Order(4, "Alen"));
+        orderBoard.add(new Order(27, "Yoda"));
+        orderBoard.add(new Order(33, "Obi-van"));
+        orderBoard.add(new Order(34, "John Snow"));
 
         orderBoard.draw();
         orderBoard.deliver();
