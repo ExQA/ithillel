@@ -6,21 +6,20 @@ import java.util.stream.Collectors;
 
 public class FilterManager {
     private static final String PRODUCT_TYPE = "Book";
-
-    public static final List<Product> products;
+    private final List<Product> products;
 
     public FilterManager(List<Product> products) {
         this.products = products;
     }
 
-    public static  List<Product> FilteredByPrice(int price) {
+    public List<Product> filteredByPrice(int price) {
         return products.stream()
                 .filter(p -> p.getType().equals("Book"))
                 .filter(p -> p.getPrice() > price)
                 .collect(Collectors.toList());
     }
 
-    public List<Product> ApplyingDiscount(List<Product> products) {
+    public List<Product> applyingDiscount(List<Product> products) {
         return products.stream()
                 .filter(p -> p.getType().equals(PRODUCT_TYPE))
                 .filter(p -> p.isDiscountAvailable())
@@ -38,14 +37,14 @@ public class FilterManager {
                 .orElseThrow(() -> new RuntimeException("Product type " + PRODUCT_TYPE + "wasn't found"));
     }
 
-    public List<Product> getThreeProducts () {
+    public List<Product> getThreeProducts() {
         return products.stream()
                 .sorted(Comparator.comparing(Product::getCreateDate))
                 .limit(3)
                 .collect(Collectors.toList());
     }
 
-    public static double totalPrice () {
+    public double totalPrice() {
         return products.stream()
                 .filter(p -> p.getCreateDate().getYear() == new Date().getYear())
                 .filter(p -> p.getType().equals(PRODUCT_TYPE))
@@ -55,7 +54,7 @@ public class FilterManager {
                 .orElseThrow(() -> new RuntimeException("Cannot find " + PRODUCT_TYPE));
     }
 
-    public static Map<String, List<Product>> groupByType(List<Product> products) {
+    public Map<String, List<Product>> groupByType(List<Product> products) {
         return products.stream()
                 .collect(Collectors.groupingBy(Product::getType));
     }

@@ -1,7 +1,4 @@
-import javax.xml.crypto.Data;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
 
 public class Product {
     private final int id;
