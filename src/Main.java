@@ -27,24 +27,24 @@ public class Main {
 
         if (file.exists() && file.isFile()) {
             try {
-                BookAnalyzer bookAnalyzer = new BookAnalyzer();
+                BookParser bookParser = new BookParser();
 
                 // Analyze the book
-                Map<String, Integer> wordCountMap = bookAnalyzer.analyzeBook(file);
+                Map<String, Integer> wordCountMap = bookParser.statistic(file);
                 System.out.println("The result of the analysis of the book:");
                 printWordCount(wordCountMap);
 
                 // Getting top 10 words
-                Map<String, Integer> topWords = bookAnalyzer.getTopWords(wordCountMap);
+                Map<String, Integer> topWords = bookParser.topWords(wordCountMap);
                 System.out.println("\nTOP10 words");
                 printWordCount(topWords);
 
                 // Total number of unique words
-                int uniqueWordsCount = bookAnalyzer.countUniqueWords(wordCountMap);
+                int uniqueWordsCount = bookParser.uniqWords(wordCountMap);
                 System.out.println("\nTotal number of unique words: " + uniqueWordsCount);
 
                 // Wring analyze in the file
-                bookAnalyzer.analyzeAndWriteStatistics(file, bookTitle);
+                bookParser.save(file, bookTitle);
 
             } catch (IOException e) {
                 System.out.println("Error during getting the book: " + e.getMessage());

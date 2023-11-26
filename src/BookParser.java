@@ -6,21 +6,21 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class BookAnalyzer {
-    public Map<String, Integer> getTopWords(Map<String, Integer> wordCountMap) {
-        return wordCountMap.entrySet()
+public class BookParser {
+    public Map<String, Integer> topWords(Map<String, Integer> words) {
+        return words.entrySet()
                 .stream()
                 .sorted((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()))
                 .limit(10)
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
-    public int countUniqueWords(Map<String, Integer> wordCountMap) {
-        return wordCountMap.size();
+    public int uniqWords(Map<String, Integer> words) {
+        return words.size();
     }
 
-    public Map<String, Integer> analyzeBook(File bookFile) throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(bookFile))) {
+    public Map<String, Integer> statistic(File file) throws IOException {
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             Map<String, Integer> wordCountMap = new HashMap<>();
 
@@ -37,10 +37,10 @@ public class BookAnalyzer {
             return wordCountMap;
         }
     }
-    public void analyzeAndWriteStatistics(File bookFile, String bookTitle) throws IOException {
-        Map<String, Integer> wordCountMap = analyzeBook(bookFile);
-        Map<String, Integer> topWords = getTopWords(wordCountMap);
-        StatisticsWriter.writeStatisticsToFile(bookTitle, wordCountMap, topWords, countUniqueWords(wordCountMap));
+    public void save(File bookFile, String bookTitle) throws IOException {
+        Map<String, Integer> wordCountMap = statistic(bookFile);
+        Map<String, Integer> topWords = topWords(wordCountMap);
+        StatisticsWriter.writeStatisticsToFile(bookTitle, wordCountMap, topWords, uniqWords(wordCountMap));
     }
 }
 
